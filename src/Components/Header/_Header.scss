@@ -1,0 +1,28 @@
+.Header__logo {
+  display: flex;
+  align-items: center;
+
+  &-img-wrapp {
+    width: 2.375rem;
+    height: 2.375rem;
+    margin-right: 1rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-title-wrapp {
+    h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    div {
+      color: $color-text-subtitle;
+      font-size: 0.8rem;
+    }
+  }
+}
