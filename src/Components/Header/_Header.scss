@@ -1,3 +1,11 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem $padding-app-left-right;
+  border-bottom: 1px solid #f6f6f6;
+}
+
 .Header__logo {
   display: flex;
   align-items: center;
@@ -18,11 +26,18 @@
       font-size: 1.5rem;
       margin: 0;
       text-transform: uppercase;
+      a {
+        color: $color-text-title;
+        text-decoration: none;
+      }
     }
 
     div {
-      color: $color-text-subtitle;
       font-size: 0.8rem;
+      a {
+        color: $color-text-subtitle;
+        text-decoration: none;
+      }
     }
   }
 }

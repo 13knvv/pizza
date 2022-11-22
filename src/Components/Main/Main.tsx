@@ -1,9 +1,9 @@
 
 
 const Main = () => {
-  return <div>
+  return <main className="Main">
     
-  </div>
+  </main>
 }
 
 export default Main
