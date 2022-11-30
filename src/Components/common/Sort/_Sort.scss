@@ -1,0 +1,44 @@
+.sort {
+  position: relative;
+  font-size: 0.875rem;
+
+  &__by {
+    margin-left: 0.5rem;
+    border-bottom: 1px dotted $color-text-bright;
+    color: $color-text-bright;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-text-dark;
+      border-color: $color-text-dark;
+    }
+  }
+
+  &__byList {
+    position: absolute;
+    right: 0;
+    top: 2rem;
+    padding: 0.81rem 0;
+    margin: 0;
+    border-radius: 0.714rem;
+    box-shadow: $box-shadow-ligth;
+    background-color: $color-background-app;
+  }
+
+  &__byItem {
+    padding: 0.625rem 1.5rem 0.625rem 0.875rem;
+    list-style: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-background-bright;
+      color: $color-button-bright;
+    }
+
+    &--active {
+      background-color: $color-background-bright;
+      color: $color-button-bright;
+      font-weight: 700;
+    }
+  }
+}

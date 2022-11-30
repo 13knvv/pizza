@@ -2,7 +2,7 @@ import basketSvg from './svg/basket.svg'
 
 const ButtonBasket = () => {
   return (
-    <button className="ButtonBasket">
+    <button className="buttonBasket">
       520 ₽<span></span>
       <div>
         <img src={basketSvg} alt="basket" />

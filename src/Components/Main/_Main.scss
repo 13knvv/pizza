@@ -1,3 +1,10 @@
-.Main {
+.main {
   padding: 40px $padding-app-left-right $padding-app-bottom;
+
+  &__header { 
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }
+}
+

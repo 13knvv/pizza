@@ -4,12 +4,12 @@
 
 body {
   background-color: $color-background;
-  
 }
 
 .App__container {
   max-width: 1340px;
   margin: 2.687rem auto;
-  background-color: #fff;
+  background-color: $color-background-app;
   border-radius: 1.25rem;
+  box-shadow: $box-shadow-ligth;
 }

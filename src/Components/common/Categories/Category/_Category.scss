@@ -1,0 +1,20 @@
+.category {
+  background-color: $color-button-category-ligth;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 1.875rem;
+  box-shadow: $box-shadow-ligth;
+  color: $color-text-dark;
+  font-weight: 700;
+  cursor: pointer;
+  
+  
+  &--active {
+    background-color: $color-button-category-dark;
+    color: $color-text-light;
+  }
+
+  &:hover {
+  box-shadow: $box-shadow;
+  }
+}
