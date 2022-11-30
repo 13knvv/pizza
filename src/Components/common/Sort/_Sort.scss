@@ -1,11 +1,14 @@
 .sort {
   position: relative;
   font-size: 0.875rem;
+  font-weight: 700;
 
   &__by {
     margin-left: 0.5rem;
     border-bottom: 1px dotted $color-text-bright;
     color: $color-text-bright;
+    font-weight: 400;
+    
     cursor: pointer;
 
     &:hover {
@@ -28,6 +31,8 @@
   &__byItem {
     padding: 0.625rem 1.5rem 0.625rem 0.875rem;
     list-style: none;
+    font-weight: 400;
+
     cursor: pointer;
 
     &:hover {
