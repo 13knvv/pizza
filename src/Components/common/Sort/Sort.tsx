@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 const Sort = () => {
   const [isOpenPopUp, setIsOpenPopUp] = useState<boolean>(false)
-  const [sortBy, setSortBy] = useState<string>('по пулярности')
+  const [sortBy, setSortBy] = useState<string>('популярности')
 
   useEffect(() => {
     document.addEventListener('click', onClickOutSide)
@@ -30,44 +30,44 @@ const Sort = () => {
 
   return (
     <div className="sort">
-      Сортировка по:
+      <span className='sort__by-title'>Сортировка по:</span>
       <span onClick={onClickByList} className="sort__by">
         {sortBy}
+        {isOpenPopUp && (
+          <ul className="sort__byList">
+            <li
+              className={
+                sortBy === 'популярности'
+                  ? 'sort__byItem sort__byItem--active'
+                  : 'sort__byItem'
+              }
+              onClick={() => onClickByItem('популярности')}
+            >
+              популярности
+            </li>
+            <li
+              className={
+                sortBy === 'цене'
+                  ? 'sort__byItem sort__byItem--active'
+                  : 'sort__byItem'
+              }
+              onClick={() => onClickByItem('цене')}
+            >
+              цене
+            </li>
+            <li
+              className={
+                sortBy === 'алфавиту'
+                  ? 'sort__byItem sort__byItem--active'
+                  : 'sort__byItem'
+              }
+              onClick={() => onClickByItem('алфавиту')}
+            >
+              алфавиту
+            </li>
+          </ul>
+        )}
       </span>
-      {isOpenPopUp && (
-        <ul className="sort__byList">
-          <li
-            className={
-              sortBy === 'по пулярности'
-                ? 'sort__byItem sort__byItem--active'
-                : 'sort__byItem'
-            }
-            onClick={() => onClickByItem('по пулярности')}
-          >
-            по пулярности
-          </li>
-          <li
-            className={
-              sortBy === 'по цене'
-                ? 'sort__byItem sort__byItem--active'
-                : 'sort__byItem'
-            }
-            onClick={() => onClickByItem('по цене')}
-          >
-            по цене
-          </li>
-          <li
-            className={
-              sortBy === 'по алфавиту'
-                ? 'sort__byItem sort__byItem--active'
-                : 'sort__byItem'
-            }
-            onClick={() => onClickByItem('по алфавиту')}
-          >
-            по алфавиту
-          </li>
-        </ul>
-      )}
     </div>
   )
 }

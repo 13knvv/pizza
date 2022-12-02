@@ -1,20 +1,21 @@
 interface ICategoryProps {
-  handleClickCategory: (category: string) => void
+  handleClickCategory: (category: number) => void
   name: string
-  activeCategory: string
+  activeCategory: number
+  index: number
 }
 
 const Category = (props: ICategoryProps) => {
-  const { name, activeCategory, handleClickCategory } = props
+  const { name, activeCategory, index, handleClickCategory } = props
 
   const onClick = () => {
-    handleClickCategory(name)
+    handleClickCategory(index)
   }
 
   return (
     <button
       className={
-        activeCategory === name ? 'category category--active' : 'category'
+        activeCategory === index ? 'category category--active' : 'category'
       }
       onClick={onClick}
     >

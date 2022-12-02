@@ -1,14 +1,23 @@
 .sort {
-  position: relative;
+  display: flex;
+  flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 700;
+  margin-left: 2rem;
+  justify-content: flex-end;
+
+  &__by-title {
+    flex-shrink: 0;
+  }
 
   &__by {
+    position: relative;
     margin-left: 0.5rem;
     border-bottom: 1px dotted $color-text-bright;
     color: $color-text-bright;
     font-weight: 400;
-    
+    flex-shrink: 0;
+
     cursor: pointer;
 
     &:hover {

@@ -11,18 +11,19 @@ const categories = [
 ]
 
 const Categories = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('Все')
+  const [activeCategory, setActiveCategory] = useState<number>(0)
 
-  const handleClickCategory = (category: string) => {
+  const handleClickCategory = (category: number) => {
     setActiveCategory(category)
   }
-  const categoryComponents = categories.map((item) => {
+  const categoryComponents = categories.map((item, index) => {
     return (
       <Category
         key={item}
         handleClickCategory={handleClickCategory}
         name={item}
         activeCategory={activeCategory}
+        index={index}
       />
     )
   })
