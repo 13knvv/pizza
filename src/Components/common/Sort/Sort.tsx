@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 
 const Sort = () => {
   const [isOpenPopUp, setIsOpenPopUp] = useState<boolean>(false)
-  const [sortBy, setSortBy] = useState<string>('популярности')
+  const [sortBy, setSortBy] = useState<number>(0)
+  const sortByArray = ['популярности', 'цене', 'алфавиту']
 
   useEffect(() => {
     document.addEventListener('click', onClickOutSide)
@@ -23,50 +24,33 @@ const Sort = () => {
     setIsOpenPopUp((isOpenPopUp) => !isOpenPopUp)
   }
 
-  const onClickByItem = (by: string) => {
+  const onClickByItem = (byIndex: number) => {
     setIsOpenPopUp(false)
-    setSortBy(by)
+    setSortBy(byIndex)
   }
+
+  const listBy = sortByArray.map((item, index) => {
+    return (
+      <li
+        key={index}
+        className={
+          sortBy === index
+            ? 'sort__byItem sort__byItem--active'
+            : 'sort__byItem'
+        }
+        onClick={() => onClickByItem(index)}
+      >
+        {item}
+      </li>
+    )
+  })
 
   return (
     <div className="sort">
-      <span className='sort__by-title'>Сортировка по:</span>
+      <span className="sort__by-title">Сортировка по:</span>
       <span onClick={onClickByList} className="sort__by">
-        {sortBy}
-        {isOpenPopUp && (
-          <ul className="sort__byList">
-            <li
-              className={
-                sortBy === 'популярности'
-                  ? 'sort__byItem sort__byItem--active'
-                  : 'sort__byItem'
-              }
-              onClick={() => onClickByItem('популярности')}
-            >
-              популярности
-            </li>
-            <li
-              className={
-                sortBy === 'цене'
-                  ? 'sort__byItem sort__byItem--active'
-                  : 'sort__byItem'
-              }
-              onClick={() => onClickByItem('цене')}
-            >
-              цене
-            </li>
-            <li
-              className={
-                sortBy === 'алфавиту'
-                  ? 'sort__byItem sort__byItem--active'
-                  : 'sort__byItem'
-              }
-              onClick={() => onClickByItem('алфавиту')}
-            >
-              алфавиту
-            </li>
-          </ul>
-        )}
+        {sortByArray[sortBy]}
+        {isOpenPopUp && <ul className="sort__byList">{listBy}</ul>}
       </span>
     </div>
   )

@@ -48,6 +48,15 @@ const pizzasData = [
     category: 2,
     price: 550
   },
+  {
+    id: 5,
+    imgName: '3.png',
+    name: 'Пеперони',
+    types: [0, 1],
+    size: [26, 30, 40],
+    category: 2,
+    price: 550
+  },
 ]
 
 const Main = () => {

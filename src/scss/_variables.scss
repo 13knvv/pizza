@@ -11,6 +11,8 @@
 $color-background: #ffdf8c;
 $color-background-app: #fff;
 $color-background-bright: rgba(254, 93, 30, 0.055);
+$color-background-pizza-card-options: #f3f3f3;
+$color-background-pizza-card-options-active: #fff;
 $color-text-dark: #2c2c2c;
 $color-text-lighter: #cacaca;
 $color-text-light: #ffffff;
@@ -30,3 +32,16 @@ $border-radius-button: 1.875rem;
 
 $box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
 $box-shadow-ligth: 0px 0px 5px 2px rgba(66, 74, 80, 0.096);
+
+
+@media only screen and (max-width: 1150px) {
+  :root {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  :root {
+    font-size: 14px;
+  }
+}

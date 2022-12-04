@@ -1,0 +1,60 @@
+.button-add {
+  display: flex;
+  align-items: baseline;
+  padding: 0.687rem 1.3rem;
+  background-color: #fff;
+  color: $color-text-bright;
+  border-radius: $border-radius-button;
+  border: 1px solid $color-text-bright;
+  box-shadow: $box-shadow-ligth;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: $box-shadow;
+    color: $color-text-light;
+    background-color: $color-button-bright;
+  }
+
+  &:active {
+    box-shadow: $box-shadow-ligth;
+  }
+
+  &__svg-wrapp {
+    width: 0.7rem;
+    height: 0.7rem;
+    margin-right: 0.5rem;
+
+    svg {
+      width: 100%;
+      height: 100%;
+
+      path {
+        fill: $color-text-bright;
+      }
+    }
+  }
+
+  &:hover &__svg-wrapp svg path {
+    fill: $color-text-light;
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 1.365rem;
+    min-height: 1.365rem;
+    margin-left: 0.6rem;
+    padding: 0.2rem;
+    background-color: $color-button-bright;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    color: $color-text-light;
+  }
+
+  &:hover &__quantity {
+    background-color: #fff;
+    color: $color-text-bright;
+  }
+}
