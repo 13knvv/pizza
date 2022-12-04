@@ -1,12 +1,10 @@
-import { useState } from 'react'
-import img1 from '../../../img/pizzas/1.png'
-import img2 from '../../../img/pizzas/2.png'
-import img3 from '../../../img/pizzas/3.png'
-import img4 from '../../../img/pizzas/4.png'
+import { useEffect, useState } from 'react'
+import { api } from '../../../api/firebaseApi'
 import ButtonAdd from '../ButtonAdd/ButtonAdd'
+import PizzaCardSkeleton from './PizzaCardSkeleton'
 
 interface IPropsPizzaCard {
-  id: number
+  id: string
   imgName: string
   name: string
   types: number[]
@@ -16,11 +14,22 @@ interface IPropsPizzaCard {
 }
 
 const PizzaCard = (props: IPropsPizzaCard) => {
-  const { id, name, types, size, price } = props
+  const { id, name, types, size, price, imgName } = props
   const [activeType, setActiveType] = useState<number>(0)
   const [activeSize, setActiveSize] = useState<number>(0)
+  const [imgUrl, setImgUrl] = useState<any>('')
 
-  const imges = [img1, img2, img3, img4, img2, img4]
+  useEffect(() => {
+    api
+      .getImgUrl(id, imgName)
+      .then((url) => {
+        setImgUrl(url)
+        console.log(url)
+      })
+      .catch((err) => '')
+  }, [])
+
+
   const typesName = ['тонкое', 'традиционное']
   const typeComponents = types.map((type, index) => (
     <div
@@ -49,18 +58,22 @@ const PizzaCard = (props: IPropsPizzaCard) => {
     </div>
   ))
 
+  if (!imgUrl) {
+    return <PizzaCardSkeleton />
+  }
+
   return (
     <div className="pizza-card">
       <div className="pizza-card__img-wrapp">
-        <img src={imges[id]} alt="" />
+        <img src={imgUrl} alt="" />
       </div>
       <h3 className="pizza-card__title">{name}</h3>
       <div className="pizza-card__options">
         <div className="pizza-card__options-items">{typeComponents}</div>
         <div className="pizza-card__options-items">{sizeComponents}</div>
       </div>
-      <div className='pizza-card__footer'>
-        <div className='pizza-card__price'>{price} p.</div>
+      <div className="pizza-card__footer">
+        <div className="pizza-card__price">{price} p.</div>
         <ButtonAdd />
       </div>
     </div>

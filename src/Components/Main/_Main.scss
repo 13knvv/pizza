@@ -9,26 +9,7 @@
 }
 
 .pizzas {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 3rem 1.5rem;
-  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-@media only screen and (max-width: 900px) {
-  .pizzas {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-@media only screen and (max-width: 650px) {
-  .pizzas {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media only screen and (max-width: 460px) {
-  .pizzas {
-    grid-template-columns: 1fr;
-  }
-}

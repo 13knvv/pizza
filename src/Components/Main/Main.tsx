@@ -1,80 +1,53 @@
+import { useEffect, useState } from 'react'
+import { api, IPizza } from '../../api/firebaseApi'
 import Categories from '../common/Categories/Categories'
 import PizzaCard from '../common/PizzaCard/PizzaCard'
+import PizzaCardSkeleton from '../common/PizzaCard/PizzaCardSkeleton'
 import Sort from '../common/Sort/Sort'
 
-const pizzasData = [
+const pizzasFakeData = [
   {
-    id: 0,
+    id: '0',
     imgName: '1.png',
     name: 'Пеперони',
     types: [0, 1],
     size: [26, 30, 40],
     category: 0,
-    price: 550
-  },
-  {
-    id: 1,
-    imgName: '2.png',
-    name: 'Сырная',
-    types: [0, 1],
-    size: [26, 30],
-    category: 1,
-    price: 550
-  },
-  {
-    id: 2,
-    imgName: '3.png',
-    name: 'Пеперони',
-    types: [0, 1],
-    size: [26, 30, 40],
-    category: 2,
-    price: 550
-  },
-  {
-    id: 3,
-    imgName: '4.png',
-    name: 'Пеперони',
-    types: [0, 1],
-    size: [26, 30, 40],
-    category: 2,
-    price: 550
-  },
-  {
-    id: 4,
-    imgName: '4.png',
-    name: 'Пеперони',
-    types: [0, 1],
-    size: [26, 30, 40],
-    category: 2,
-    price: 550
-  },
-  {
-    id: 5,
-    imgName: '3.png',
-    name: 'Пеперони',
-    types: [0, 1],
-    size: [26, 30, 40],
-    category: 2,
-    price: 550
+    price: 550,
+    rating: 3,
   },
 ]
 
 const Main = () => {
+  const [pizzasData, setPizzasData] = useState<IPizza[] | null>(null)
 
-  const pizzaCards = pizzasData.map( data => {
+  useEffect(() => {
+    api
+      .getPizzas()
+      .then((pizzas) => {
+        setPizzasData(pizzas)
+      })
+      .catch((err) => alert('main' + err))
+  }, [])
+
+  const pizzaCards = pizzasData?.map((data) => {
     return <PizzaCard key={data.id} {...data} />
   })
-  
+
   return (
     <main className="main">
       <div className="main__header">
         <Categories />
         <Sort />
       </div>
-      <div className='main__body'>
+      <div className="main__body">
         <h2>Все пиццы</h2>
-        <div className='pizzas'>
-          {pizzaCards}
+        <div className="pizzas">
+          {!pizzasData
+            ? [...new Array(8)].map((fake) => <PizzaCardSkeleton />)
+            : pizzasData?.map((data) => {
+                return <PizzaCard key={data.id} {...data} />
+              })}
         </div>
       </div>
     </main>
