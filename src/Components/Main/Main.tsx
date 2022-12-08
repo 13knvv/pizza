@@ -38,13 +38,18 @@ const Main = () => {
     <main className="main">
       <div className="main__header">
         <Categories />
-        <Sort />
+
+        <div className='main__header-title'>
+          <h2>Все пиццы</h2>
+          <Sort />
+        </div>
       </div>
       <div className="main__body">
-        <h2>Все пиццы</h2>
         <div className="pizzas">
           {!pizzasData
-            ? [...new Array(8)].map((fake) => <PizzaCardSkeleton />)
+            ? [...new Array(8)].map((fake, index) => (
+                <PizzaCardSkeleton key={index} />
+              ))
             : pizzasData?.map((data) => {
                 return <PizzaCard key={data.id} {...data} />
               })}

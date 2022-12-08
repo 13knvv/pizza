@@ -1,4 +1,28 @@
-.categories *+* {
-  margin-left: 1rem;
-  margin-bottom: 1rem;
+.categories {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    position: relative;
+    left: -1.50rem;
+    width: calc(100% + 3rem);
+    padding: 0.2rem;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #ffde8c4f;
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #ffdf8c;
+      border-radius: 20px;
+    }
+  }
 }

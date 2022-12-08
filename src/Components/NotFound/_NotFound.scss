@@ -1,0 +1,14 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem 5rem;
+
+  a {
+    color: black;
+  }
+
+  &__error-svg {
+    width: 30%;
+  }
+}

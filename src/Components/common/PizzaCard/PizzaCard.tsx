@@ -26,9 +26,8 @@ const PizzaCard = (props: IPropsPizzaCard) => {
         setImgUrl(url)
         console.log(url)
       })
-      .catch((err) => '')
+      .catch((err) => 'img error')
   }, [])
-
 
   const typesName = ['тонкое', 'традиционное']
   const typeComponents = types.map((type, index) => (
@@ -63,18 +62,20 @@ const PizzaCard = (props: IPropsPizzaCard) => {
   }
 
   return (
-    <div className="pizza-card">
-      <div className="pizza-card__img-wrapp">
-        <img src={imgUrl} alt="" />
-      </div>
-      <h3 className="pizza-card__title">{name}</h3>
-      <div className="pizza-card__options">
-        <div className="pizza-card__options-items">{typeComponents}</div>
-        <div className="pizza-card__options-items">{sizeComponents}</div>
-      </div>
-      <div className="pizza-card__footer">
-        <div className="pizza-card__price">{price} p.</div>
-        <ButtonAdd />
+    <div className="pizzas-card__wrapp">
+      <div className="pizza-card">
+        <div className="pizza-card__img-wrapp">
+          <img src={imgUrl} alt="" />
+        </div>
+        <h3 className="pizza-card__title">{name}</h3>
+        <div className="pizza-card__options">
+          <div className="pizza-card__options-items">{typeComponents}</div>
+          <div className="pizza-card__options-items">{sizeComponents}</div>
+        </div>
+        <div className="pizza-card__footer">
+          <div className="pizza-card__price">{price} p.</div>
+          <ButtonAdd />
+        </div>
       </div>
     </div>
   )

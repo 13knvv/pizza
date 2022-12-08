@@ -1,4 +1,4 @@
-.buttonBasket {
+.button-basket {
   display: flex;
   align-items: center;
   padding: 1rem 1.437rem;
@@ -13,7 +13,7 @@
     box-shadow: $box-shadow;
   }
 
-  span {
+  &__line {
     width: 1px;
     height: 1rem;
     background-color: $color-text-light;
@@ -29,6 +29,12 @@
     img {
       width: 100%;
       height: 100%;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    span {
+      display: none;
     }
   }
 }

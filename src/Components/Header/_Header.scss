@@ -4,6 +4,10 @@
   align-items: center;
   padding: 2.5rem $padding-app-left-right;
   border-bottom: 1px solid #f6f6f6;
+
+  @media screen and  (max-width: 900px) {
+    padding: 2rem $padding-app-left-right/2;
+  }
 }
 
 .header__logo {

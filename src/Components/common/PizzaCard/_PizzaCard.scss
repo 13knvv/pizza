@@ -1,11 +1,14 @@
+.pizzas-card__wrapp {
+  display: flex;
+  justify-content: center;
+}
+
 .pizza-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 292px;
   height: 492px;
-  margin-right: 1.1rem;
-  margin-bottom: 2rem;
 
   &__img-wrapp {
     width: 262px;

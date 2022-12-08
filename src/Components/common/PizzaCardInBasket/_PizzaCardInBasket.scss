@@ -1,0 +1,106 @@
+.pizzaCardInBasket {
+  display: flex;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f6f6f6;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    width: 50%;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+  &__settings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    margin-top: 1rem;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+  &__img {
+    width: 5rem;
+    height: 5rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__title {
+    h3 {
+      margin: 0;
+      margin-bottom: 0.4rem;
+    }
+
+    span {
+      font-size: 1.125rem;
+      color: #8d8d8d;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 1rem;
+    background: none;
+    border: 1.3px solid $color-text-bright;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-text-bright;
+    cursor: pointer;
+    box-shadow: $box-shadow-ligth;
+
+    &:hover {
+      box-shadow: $box-shadow;
+    }
+
+    &:active {
+      box-shadow: $box-shadow-ligth;
+    }
+
+    span {
+      transform: translateY(-0.13rem);
+    }
+
+    &--delete {
+      border: 1px solid #d7d7d7;
+      color: #d0d0d0;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    font-size: 1.365rem;
+    font-weight: 700;
+
+    button {
+      margin: 0 1rem;
+    }
+  }
+
+  &__cost {
+    font-size: 1.365rem;
+    font-weight: 700;
+  }
+}

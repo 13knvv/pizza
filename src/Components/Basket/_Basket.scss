@@ -1,0 +1,64 @@
+.basket {
+  max-width: 821px;
+  margin: 0 auto;
+  padding: 3rem $padding-app-left-right/2;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  &__title {
+    display: flex;
+
+    img {
+      width: 1.5rem;
+      margin-right: 0.6rem;
+    }
+
+    h2 {
+    margin: 0;
+    }
+  }
+
+  &__clear {
+    display: flex;
+    align-items: center;
+    color: #b6b6b6;
+    font-size: 0.9rem;
+    cursor: pointer;
+
+    svg {
+      width: 1rem;
+      margin-right: 0.4rem;
+    }
+
+    &:hover {
+      color: #7c7c7c;
+
+      svg path {
+        stroke: #7c7c7c;
+      }
+    }
+  }
+  
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+
+    &-pizzas {
+      span {
+        font-weight: 700;
+      }
+    }
+
+    &-price {
+      span {
+        font-weight: 700;
+        color: $color-text-bright;
+      }
+    }
+  }
+}

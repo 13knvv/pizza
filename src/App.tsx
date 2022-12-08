@@ -1,6 +1,8 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import Basket from './Components/Basket/Basket'
 import Header from './Components/Header/Header'
 import Main from './Components/Main/Main'
+import NotFound from './Components/NotFound/NotFound'
 import './scss/App.scss'
 
 function App() {
@@ -8,6 +10,9 @@ function App() {
     <Header />
     <Routes>
       <Route path='/' element={<Main />} />
+      <Route path='/basket' element={<Basket />} />
+      <Route path='/404' element={<NotFound />} />
+      <Route path='*' element={<Navigate to="/" replace />} />
     </Routes>
     </div>
 }
