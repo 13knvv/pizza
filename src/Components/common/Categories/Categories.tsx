@@ -1,29 +1,23 @@
-import { useState } from "react"
-import Category from "./Category/Category"
-
-const categories = [
-  'Все',
-  'Мясные',
-  'Вегетарианские',
-  'Гриль',
-  'Острые',
-  'Закрытые',
-]
+import { useDispatch, useSelector } from 'react-redux'
+import { ICategory, setActiveCategory } from '../../../Redux/filterSlice'
+import { RootState } from '../../../Redux/store'
+import Category from './Category/Category'
 
 const Categories = () => {
-  const [activeCategory, setActiveCategory] = useState<number>(0)
+  const dispatch = useDispatch()
+  const categories = useSelector( (state: RootState) => state.filter.categories)
+  const activeCategory = useSelector( (state: RootState) => state.filter.activeCategory)
 
-  const handleClickCategory = (category: number) => {
-    setActiveCategory(category)
+  const handleClickCategory = (category: ICategory) => {
+    dispatch(setActiveCategory(category))
   }
   const categoryComponents = categories.map((item, index) => {
     return (
       <Category
-        key={item}
+        key={index}
         handleClickCategory={handleClickCategory}
-        name={item}
+        category={item}
         activeCategory={activeCategory}
-        index={index}
       />
     )
   })

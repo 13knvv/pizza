@@ -1,21 +1,22 @@
+import { ICategory } from "../../../../Redux/filterSlice"
+
 interface ICategoryProps {
-  handleClickCategory: (category: number) => void
-  name: string
-  activeCategory: number
-  index: number
+  handleClickCategory: (category: ICategory) => void
+  category: ICategory
+  activeCategory: ICategory
 }
 
 const Category = (props: ICategoryProps) => {
-  const { name, activeCategory, index, handleClickCategory } = props
+  const { category, activeCategory, handleClickCategory } = props
   
   return (
     <button
       className={
-        activeCategory === index ? 'category category--active' : 'category'
+        activeCategory.id === category.id ? 'category category--active' : 'category'
       }
-      onClick={() => handleClickCategory(index)}
+      onClick={() => handleClickCategory(category)}
     >
-      {name}
+      {category.name}
     </button>
   )
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { api } from '../../api/firebaseApi'
 import { changeIsPizzasLoaded, setPizzas } from '../../Redux/pizzasSlice'
