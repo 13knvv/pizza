@@ -42,33 +42,20 @@ export interface IPizza {
 }
 
 export const api = {
-  async getPizzas() {
+  
+  async getPizzas(category: number, sortBy: string, ascDesc: string) {
     const result = [] as Array<IPizza>
-    const querySnapshot = await getDocs(collection(db, 'pizzas'))
-    querySnapshot.forEach((doc) => {
-      const data = doc.data()
-      result.push({
-        id: doc.id,
-        name: data.name,
-        price: data.price,
-        imgName: data.imgName,
-        rating: data.rating,
-        types: data.types,
-        size: data.size,
-        category: data.category,
-      })
-    })
-    return result
-  },
-
-  async getPizzasBy(category: number, sortBy: string) {
-    const result = [] as Array<IPizza>
-    const q = query(
+    let q = query(
       collection(db, 'pizzas'),
-      orderBy(sortBy, 'desc'),
-      where('category', '==', category)
+      orderBy(sortBy, ascDesc === 'asc' ? 'asc' : 'desc')
     )
-
+    if (category) {
+      q = query(
+        collection(db, 'pizzas'),
+        where('category', '==', category),
+        orderBy(sortBy, ascDesc === 'asc' ? 'asc' : 'desc')
+      )
+    }
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
       const data = doc.data()
