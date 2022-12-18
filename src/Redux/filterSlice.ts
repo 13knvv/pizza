@@ -5,10 +5,16 @@ export interface ICategory {
   id: number
   name: String
 }
+export interface ISortBy {
+  id: number
+  name: String
+}
 
 export interface FilterState {
   categories: Array<ICategory>
   activeCategory: ICategory
+  sortByList: Array<ISortBy>
+  activeSortBy: ISortBy
 }
 
 const initialState: FilterState = {
@@ -21,6 +27,13 @@ const initialState: FilterState = {
     { id: 5, name: 'Закрытые' },
   ],
   activeCategory: { id: 0, name: 'Все' },
+
+  sortByList: [
+    { id: 0, name: 'популярности' },
+    { id: 1, name: 'цене' },
+    { id: 2, name: 'алфавиту' },
+  ],
+  activeSortBy: { id: 0, name: 'популярности' },
 }
 
 export const filterSlice = createSlice({
@@ -30,8 +43,11 @@ export const filterSlice = createSlice({
     setActiveCategory: (state, action: PayloadAction<ICategory>) => {
       state.activeCategory = action.payload
     },
+    setActiveSortBy: (state, action: PayloadAction<ISortBy>) => {
+      state.activeSortBy = action.payload
+    },
   },
 })
 
-export const { setActiveCategory } = filterSlice.actions
+export const { setActiveCategory, setActiveSortBy } = filterSlice.actions
 export default filterSlice.reducer

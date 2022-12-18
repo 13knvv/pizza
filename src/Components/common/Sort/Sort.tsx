@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { ISortBy, setActiveSortBy } from '../../../Redux/filterSlice'
+import { RootState } from '../../../Redux/store'
 
 const Sort = () => {
   const [isOpenPopUp, setIsOpenPopUp] = useState<boolean>(false)
-  const [sortBy, setSortBy] = useState<number>(0)
-  const sortByArray = ['популярности', 'цене', 'алфавиту']
+  const dispatch = useDispatch()
+  const sortByList = useSelector( (state: RootState) => state.filter.sortByList)
+  const activeSortBy = useSelector( (state: RootState) => state.filter.activeSortBy)
 
   useEffect(() => {
     document.addEventListener('click', onClickOutSide)
@@ -20,27 +24,27 @@ const Sort = () => {
     }
   }
 
-  const onClickByList = () => {
+  const onClickActiveSortBy = () => {
     setIsOpenPopUp((isOpenPopUp) => !isOpenPopUp)
   }
 
-  const onClickByItem = (byIndex: number) => {
+  const onClickByItem = (item: ISortBy) => {
     setIsOpenPopUp(false)
-    setSortBy(byIndex)
+    dispatch(setActiveSortBy(item))
   }
 
-  const listBy = sortByArray.map((item, index) => {
+  const listBy = sortByList.map((item, index) => {
     return (
       <li
         key={index}
         className={
-          sortBy === index
+          activeSortBy.id === item.id
             ? 'sort__byItem sort__byItem--active'
             : 'sort__byItem'
         }
-        onClick={() => onClickByItem(index)}
+        onClick={() => onClickByItem(item)}
       >
-        {item}
+        {item.name}
       </li>
     )
   })
@@ -48,8 +52,8 @@ const Sort = () => {
   return (
     <div className="sort">
       <span className="sort__by-title">Сортировка по:</span>
-      <span onClick={onClickByList} className="sort__by">
-        {sortByArray[sortBy]}
+      <span onClick={onClickActiveSortBy} className="sort__by">
+        {activeSortBy.name}
         {isOpenPopUp && <ul className="sort__byList">{listBy}</ul>}
       </span>
     </div>
