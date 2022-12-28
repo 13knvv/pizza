@@ -11,13 +11,6 @@ import {
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage'
 
 const firebaseConfig = {
-  // apiKey: 'AIzaSyCsbyO0cRzMpF-_7m2BCKNTyZdBNi3cNs0',
-  // authDomain: 'pizza-78e3d.firebaseapp.com',
-  // projectId: 'pizza-78e3d',
-  // storageBucket: 'pizza-78e3d.appspot.com',
-  // messagingSenderId: '159894766048',
-  // appId: '1:159894766048:web:9f72992e111dc7b9922b85',
-
   apiKey: 'AIzaSyDZOMlwyDiem3qABkv1WGuoK2FMZLdYJOg',
   authDomain: 'pizza3-2884c.firebaseapp.com',
   projectId: 'pizza3-2884c',

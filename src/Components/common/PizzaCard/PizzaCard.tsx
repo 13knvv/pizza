@@ -24,7 +24,6 @@ const PizzaCard = (props: IPropsPizzaCard) => {
       .getImgUrl(id, imgName)
       .then((url) => {
         setImgUrl(url)
-        console.log(url)
       })
       .catch((err) => 'img error')
   }, [])

@@ -51,9 +51,32 @@ export const filterSlice = createSlice({
     setAscDesc: (state, action: PayloadAction<string>) => {
       state.ascDesc = action.payload
     },
+    setFilters: (state, action: PayloadAction<any>) => {
+      const category = state.categories.find(
+        (item) => item.id === Number(action.payload.category)
+      )
+      category && (state.activeCategory = category)
+
+      const sortBy = state.sortByList.find(
+        (item) => item.id === Number(action.payload.sortBy)
+      )
+      sortBy && (state.activeSortBy = sortBy)
+
+      state.ascDesc = action.payload.order
+    },
+    deleteFilters: (state) => {
+      state.activeCategory = { id: 0, name: 'Все' }
+      state.activeSortBy = { id: 0, name: 'популярности', property: 'rating' }
+      state.ascDesc = 'desc'
+    },
   },
 })
 
-export const { setActiveCategory, setActiveSortBy, setAscDesc } =
-  filterSlice.actions
+export const {
+  setActiveCategory,
+  setActiveSortBy,
+  setAscDesc,
+  setFilters,
+  deleteFilters,
+} = filterSlice.actions
 export default filterSlice.reducer
